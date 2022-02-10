@@ -24,6 +24,7 @@ fields_to_drop = ['CLINIC_CODE_x', 'TITLE_x','MAILING_ADDRESS_LINE_1_x',
        'VETERAN_FILE_NUMBER_EXPIRY_DATE', 'PATIENT_HEALTH_CARE_CARD',
        'PATIENT_HLTH_CARE_CARD_EX_DATE', 'SAFETY_NET_NO']
 
+
 vax_choice = input('Are you doing pfizer (p) or astra (a)?')
 
 if vax_choice == 'a':
@@ -35,8 +36,8 @@ elif vax_choice == 'p':
     print('Pfizer')
     path = r'H:\vaccine_auto\csv_operations\data\pfizer'
     vax_type = 'pfizer'
-else: 
-    print('Input error for vax')
+else:
+    print('Error with vax data clean')
     
 
 
@@ -62,16 +63,44 @@ def item_number_to_df (path):
     merged_data['MEDICARE_NUMBER'] = merged_data['MEDICARE_NUMBER'].str.strip()
     merged_data.drop_duplicates(subset=['FILE_NUMBER', 'LAST_IN_x'])
     merged_data['vax_type'] = vax_type
+    merged_data['auto_outcome'] = ''
     return merged_data
 
 
 vaccine_data = item_number_to_df(path)
+#print(vaccine_data['MEDICARE_NUMBER'])
+#for col in vaccine_data.columns: 
+    #print(col)
 vaccine_data = (vaccine_data.transpose()).to_dict()
-print(vaccine_data)
+#print(vaccine_data)
 
 
 
 
+fields = ['FILE_NUMBER',
+'FAMILY_NAME_x',
+'GIVEN_NAME_x',
+'HOME_ADDRESS_LINE_1_x',
+'HOME_ADDRESS_LINE_2_x',
+'HOME_SUBURB_TOWN_x', 
+'HOME_POSTCODE_x', 
+'HOME_PHONE_x',
+'AGE_x',
+'GENDER_x',
+'LAST_IN_x',
+'DATE_OF_BIRTH',
+'PATIENT_ID',
+'MAILING_ADDRESS_LINE_1_y',
+'MAILING_ADDRESS_LINE_2_y',
+'MEDICARE_NUMBER',
+'MEDICARE_BASE_NUMBER',
+'MEDICARE_NUMBER_EXPIRY',
+'email_ADDRESS',
+'vax_type', 
+'auto_outcome'] 
 
 
+##clean data for checking for vaccination duplicates. 
+rhino_df = pd.read_csv(r'H:\vaccine_auto\csv_operations\data\rhino\Blacktown 2022-01-31 02.11 Vaccinations.csv')
+rhino_data_dup_check = (rhino_df.transpose()).to_dict()
 

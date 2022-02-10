@@ -1,7 +1,7 @@
 class Patient():
     def __init__(self,name, surname, DOB, gender, medicare, address, suburb, post_code, date, vax_type, error = ''):
         self.name = name
-        self.suranme = surname
+        self.surname = surname
         self.DOB = DOB
         self.gender = gender
         self.medicare = medicare

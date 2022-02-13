@@ -101,6 +101,6 @@ fields = ['FILE_NUMBER',
 
 
 ##clean data for checking for vaccination duplicates. 
-rhino_df = pd.read_csv(r'H:\vaccine_auto\csv_operations\data\rhino\Blacktown 2022-01-31 02.11 Vaccinations.csv')
-rhino_data_dup_check = (rhino_df.transpose()).to_dict()
+#rhino_df = pd.read_csv(r'H:\vaccine_auto\csv_operations\data\rhino\Blacktown 2022-01-31 02.11 Vaccinations.csv')
+#rhino_data_dup_check = (rhino_df.transpose()).to_dict()
 

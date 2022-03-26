@@ -7,6 +7,7 @@ import glob
 pd.set_option('display.float_format', lambda x: '%.0f' % x)
 dsp_data = pd.read_csv(r'H:\vaccine_auto\csv_operations\data\dsp\DSPatients.csv', header=0, encoding='CP1252')
 
+
 fields_to_drop = ['CLINIC_CODE_x', 'TITLE_x','MAILING_ADDRESS_LINE_1_x',
        'MAILING_ADDRESS_LINE_2_x', 'MAILING_SUBURB_TOWN_x',
        'MAILING_POSTCODE_x', 'MOBILE_PHONE', 'patient_name', 'full_name',

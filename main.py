@@ -30,6 +30,8 @@ def add_encounter(patient_object, driver):
         print('adding encounter')
         vax_given = driver.find_element_by_id('light_vax_vaxGiven_0')
         vax_given.click()
+
+        ##### Get rid off
         third_dose = driver.find_element_by_id('light_vax_doseInfo_booster3')
         third_dose.click()
 
@@ -37,12 +39,84 @@ def add_encounter(patient_object, driver):
         vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
         print(patient_object.vax_type)
 
-        if patient_object.vax_type == 'pfizer':
-            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
-            vax_type.select_by_visible_text('Pfizer (Comirnaty)')
-        elif patient_object.vax_type == 'astra':
+        #doses
+        # light_vax_doseInfo_dose1
+        # light_vax_doseInfo_dose2
+        # light_vax_doseInfo_dose3
+        # light_vax_doseInfo_booster4
+
+        # Vaccine Brand
+        # Moderna
+        # 'Pfizer (Comirnaty)'
+
+
+        #Pf1
+        #Pf2
+        #Pf3
+        #Pf4
+        #Md4
+
+
+        if patient_object.vax_type == 'Az1':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose1')
+            dose.click()
             vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
             vax_type.select_by_visible_text('AstraZeneca')
+        
+        elif patient_object.vax_type == 'Az2':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose2')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('AstraZeneca')
+        
+        elif patient_object.vax_type == 'Az3':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose3')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('AstraZeneca')
+
+        elif patient_object.vax_type == 'Az4':
+            dose = driver.find_element_by_id('light_vax_doseInfo_booster4')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('AstraZeneca')
+
+        elif patient_object.vax_type == 'Pf1':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose1')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('Pfizer (Comirnaty)')
+
+        elif patient_object.vax_type == 'Pf2':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose2')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('Pfizer (Comirnaty)')
+
+        elif patient_object.vax_type == 'Pf3':
+            dose = driver.find_element_by_id('light_vax_doseInfo_dose3')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('Pfizer (Comirnaty)')
+
+        elif patient_object.vax_type == 'Pf4':
+            dose = driver.find_element_by_id('light_vax_doseInfo_booster4')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('Pfizer (Comirnaty)')
+
+        elif patient_object.vax_type == 'Md4':
+            dose = driver.find_element_by_id('light_vax_doseInfo_booster4')
+            dose.click()
+            vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
+            vax_type.select_by_visible_text('Moderna')
+
+        
+
+
+
+
+
         
         date_of_encounter = driver.find_element_by_id('light_vax_administration_date_date')
         date = remove_zeroes(patient_object.date)

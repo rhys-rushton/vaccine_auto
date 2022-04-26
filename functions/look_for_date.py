@@ -8,7 +8,7 @@ def look_for_date (date_string, driver):
         if date_string in div.get_attribute('innerHTML'):
             print('date here')
             date_present = True
-            break
+            #break
 
         return date_present
 

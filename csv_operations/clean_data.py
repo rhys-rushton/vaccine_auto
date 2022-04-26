@@ -1,5 +1,8 @@
 import pandas as pd
 import glob
+from PyInquirer import prompt
+
+
 
 #we need to import vaccine data for both pfizer and astra
 #we need to merge the vaccine data for pfizer and astra
@@ -26,17 +29,55 @@ fields_to_drop = ['CLINIC_CODE_x', 'TITLE_x','MAILING_ADDRESS_LINE_1_x',
        'PATIENT_HLTH_CARE_CARD_EX_DATE', 'SAFETY_NET_NO']
 
 
-vax_choice = input('Are you doing pfizer (p) or astra (a)?')
+#vax_choice = input('Are you doing pfizer (p) or astra (a)?')
 
-if vax_choice == 'a':
-    path = r'H:\vaccine_auto\csv_operations\data\astra'
-    vax_type = 'astra'
-    print('Astra')
+questions = [
+    {
+        'type': 'list',
+        'name': 'vax_type',
+        'message': 'Which Vaccine Would you Like to Upload',
+        'choices': ['Az1', 'Az2', 'Az3', 'Az4', 'Pf1', 'Pf2', 'Pf3', 'Pf4', 'Md4'],
+    }
+]
 
-elif vax_choice == 'p':
-    print('Pfizer')
-    path = r'H:\vaccine_auto\csv_operations\data\pfizer'
-    vax_type = 'pfizer'
+vax_answer = prompt(questions)
+
+if vax_answer == 'Az1':
+    path = r'H:\vaccine_auto\csv_operations\data\az1'
+    vax_type = 'Az1'
+
+elif vax_answer == 'Az2':
+    path = r'H:\vaccine_auto\csv_operations\data\az2'
+    vax_type = 'Az2'
+
+elif vax_answer == 'Az3':
+    path = r'H:\vaccine_auto\csv_operations\data\astra3'
+    vax_type = 'Az3'
+
+elif vax_answer == 'Az4':
+    path = r'H:\vaccine_auto\csv_operations\data\az4'
+    vax_type = 'Az4'
+
+elif vax_answer == 'Pf1':
+    path = r'H:\vaccine_auto\csv_operations\data\pf1'
+    vax_type = 'Pf1'
+
+elif vax_answer == 'Pf2':
+    path = r'H:\vaccine_auto\csv_operations\data\pf2'
+    vax_type = 'Pf2'
+
+elif vax_answer == 'Pf3':
+    path = r'H:\vaccine_auto\csv_operations\data\pfizer3'
+    vax_type = 'Pf3'
+
+elif vax_answer == 'Pf4':
+    path = r'H:\vaccine_auto\csv_operations\data\pf4'
+    vax_type = 'Pf4'
+
+elif vax_answer == 'Md4':
+    path = r'H:\vaccine_auto\csv_operations\data\md4'
+    vax_type = 'Md4'
+
 else:
     print('Error with vax data clean')
     

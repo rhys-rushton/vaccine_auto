@@ -30,7 +30,7 @@ def add_encounter(patient_object, driver):
         print('adding encounter')
         vax_given = driver.find_element_by_id('light_vax_vaxGiven_0')
         vax_given.click()
-        third_dose = driver.find_element_by_id('light_vax_doseInfo_3')
+        third_dose = driver.find_element_by_id('light_vax_doseInfo_booster3')
         third_dose.click()
 
         time.sleep(0.5)

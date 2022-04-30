@@ -30,6 +30,7 @@ fields_to_drop = ['CLINIC_CODE_x', 'TITLE_x','MAILING_ADDRESS_LINE_1_x',
 
 
 #vax_choice = input('Are you doing pfizer (p) or astra (a)?')
+# Using Pyinquirer
 
 questions = [
     {

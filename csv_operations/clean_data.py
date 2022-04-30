@@ -43,46 +43,48 @@ questions = [
 
 vax_answer = prompt(questions)
 
-if vax_answer == 'Az1':
+if vax_answer["vax_type"] == 'Az1':
     path = r'H:\vaccine_auto\csv_operations\data\az1'
     vax_type = 'Az1'
 
-elif vax_answer == 'Az2':
+elif vax_answer["vax_type"] == 'Az2':
     path = r'H:\vaccine_auto\csv_operations\data\az2'
     vax_type = 'Az2'
 
-elif vax_answer == 'Az3':
+elif vax_answer["vax_type"] == 'Az3':
     path = r'H:\vaccine_auto\csv_operations\data\astra3'
     vax_type = 'Az3'
 
-elif vax_answer == 'Az4':
+elif vax_answer["vax_type"] == 'Az4':
     path = r'H:\vaccine_auto\csv_operations\data\az4'
     vax_type = 'Az4'
 
-elif vax_answer == 'Pf1':
+elif vax_answer["vax_type"] == 'Pf1':
     path = r'H:\vaccine_auto\csv_operations\data\pf1'
     vax_type = 'Pf1'
+    print('hey')
 
-elif vax_answer == 'Pf2':
+elif vax_answer["vax_type"] == 'Pf2':
     path = r'H:\vaccine_auto\csv_operations\data\pf2'
     vax_type = 'Pf2'
 
-elif vax_answer == 'Pf3':
+elif vax_answer["vax_type"] == 'Pf3':
     path = r'H:\vaccine_auto\csv_operations\data\pfizer3'
     vax_type = 'Pf3'
 
-elif vax_answer == 'Pf4':
+elif vax_answer["vax_type"] == 'Pf4':
     path = r'H:\vaccine_auto\csv_operations\data\pf4'
     vax_type = 'Pf4'
 
-elif vax_answer == 'Md4':
+elif vax_answer["vax_type"] == 'Md4':
     path = r'H:\vaccine_auto\csv_operations\data\md4'
     vax_type = 'Md4'
 
 else:
     print('Error with vax data clean')
     
-
+#print(vax_answer["vax_type"])
+#print(path)
 
 
 #this is where we merge the socialble/unsocialble billing hours. 
@@ -104,7 +106,7 @@ def item_number_to_df (path):
     merged_data['MEDICARE_NUMBER'] = merged_data['MEDICARE_NUMBER'].str.replace('.0', '', regex=False)
     merged_data['MEDICARE_NUMBER'] = merged_data['MEDICARE_NUMBER'].str.replace('_', '', regex=False)
     merged_data['MEDICARE_NUMBER'] = merged_data['MEDICARE_NUMBER'].str.strip()
-    merged_data.drop_duplicates(subset=['FILE_NUMBER', 'LAST_IN_x'])
+    merged_data = merged_data.drop_duplicates(subset=['FILE_NUMBER', 'LAST_IN_x', 'DATE_OF_BIRTH'])
     merged_data['vax_type'] = vax_type
     merged_data['auto_outcome'] = ''
     return merged_data
@@ -115,7 +117,7 @@ vaccine_data = item_number_to_df(path)
 #for col in vaccine_data.columns: 
     #print(col)
 vaccine_data = (vaccine_data.transpose()).to_dict()
-#print(vaccine_data)
+print(vaccine_data)
 
 
 

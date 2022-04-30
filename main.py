@@ -32,10 +32,10 @@ def add_encounter(patient_object, driver):
         vax_given.click()
 
         ##### Get rid off
-        third_dose = driver.find_element_by_id('light_vax_doseInfo_booster3')
-        third_dose.click()
+        #third_dose = driver.find_element_by_id('light_vax_doseInfo_booster3')
+        #third_dose.click()
 
-        time.sleep(0.5)
+        time.sleep(0.1)
         vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
         print(patient_object.vax_type)
 
@@ -131,16 +131,16 @@ def add_encounter(patient_object, driver):
 
         hour.select_by_value(str(rand_hour))
         minute.select_by_value(str(rand_min))
-        time.sleep(0.5)
+        time.sleep(0.1)
 
         
         save_button = driver.find_element_by_id('submitbutton')
         save_button.click()
 
-        time.sleep(0.5)
+        time.sleep(0.1)
     except Exception as e:
         print(e)
-        time.sleep(0.5)
+        time.sleep(0.1)
         print('error in add vax')
 
     url = driver.current_url
@@ -155,7 +155,7 @@ def add_encounter(patient_object, driver):
         driver.get('https://app.respiratoryclinic.com.au/dashboard/')
         patient_vax_err.append(patient_object)
 
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 
 
@@ -165,11 +165,11 @@ def add_encounter(patient_object, driver):
 
 def check_patient_exists(patient_object, driver):
     print('checking patient exists')
-    time.sleep(0.75)
+    time.sleep(0.1)
     existing_patient_button = driver.find_element_by_link_text('Existing Vaccination Patients')
     existing_patient_button.click()
     #make sure elements load
-    time.sleep(0.75)
+    time.sleep(0.1)
     first_name_input = driver.find_element_by_id('firstName')
     last_name_input = driver.find_element_by_id('lastName')
     first_name_input.send_keys(patient_object.name)
@@ -199,7 +199,7 @@ def check_patient_exists(patient_object, driver):
                 try:
                     find_date_click(date_of_birth, driver)
                     print('find date click')
-                    time.sleep(0.5)
+                    time.sleep(0.1)
                 except:
                     patient_vax_err.append(patient_object)
                     return False
@@ -208,10 +208,10 @@ def check_patient_exists(patient_object, driver):
                     
                     #add the encounter
                     print('add encoutner after find date click')
-                    time.sleep(0.5)
+                    time.sleep(0.1)
                     add_encounter(patient_object,driver)
                     print('add encoutner after find date click')
-                    time.sleep(0.5)
+                    time.sleep(0.1)
                     #patient_vax_succ.append(patient_object)
                     return True
                 except: 
@@ -264,10 +264,10 @@ def register_patient(patient_object, driver):
 
             
 
-        time.sleep(0.5)
+        time.sleep(0.1)
         next_button = driver.find_element_by_id('button_step_1')
         next_button.click()
-        time.sleep(0.5)
+        time.sleep(0.1)
 
         driver.find_element_by_id('patient_reportConsent_yes').click()
         driver.find_element_by_id('finish_btn').click()
@@ -276,7 +276,7 @@ def register_patient(patient_object, driver):
         if url != 'https://app.respiratoryclinic.com.au/dashboard/':
             driver.find_element_by_id('finish_btn').click()
         patient_rego_success.append(patient_object)
-        time.sleep(0.5)
+        time.sleep(0.1)
         driver.find_element_by_link_text('Add Vaccination Encounter').click()
 
         add_encounter(patient_object, driver)
@@ -285,7 +285,7 @@ def register_patient(patient_object, driver):
     except Exception as e:
         print('reigstration error')
         print(e)
-        time.sleep(0.5)
+        time.sleep(0.1)
         patient_rego_error.append(patient_object)
 
 

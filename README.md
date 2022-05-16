@@ -25,7 +25,3 @@ Put the relevant data folders into the '.\csv_operations\data'
 
 All csv files are never uploaded to github because of data sensitivity. 
 
-#### Registering Patients and Adding Encounters
-
-
-#### Finding Duplicates 

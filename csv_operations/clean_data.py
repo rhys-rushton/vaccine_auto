@@ -117,7 +117,7 @@ vaccine_data = item_number_to_df(path)
 #for col in vaccine_data.columns: 
     #print(col)
 vaccine_data = (vaccine_data.transpose()).to_dict()
-print(vaccine_data)
+#print(vaccine_data)
 
 
 

@@ -94,7 +94,7 @@ def add_encounter(patient_object, driver):
             vax_type.select_by_visible_text('Pfizer (Comirnaty)')
 
         elif patient_object.vax_type == 'Pf3':
-            dose = driver.find_element_by_id('light_vax_doseInfo_dose3')
+            dose = driver.find_element_by_id('light_vax_doseInfo_booster3')
             dose.click()
             vax_type = Select(driver.find_element_by_id('light_vax_vaccineType'))
             vax_type.select_by_visible_text('Pfizer (Comirnaty)')
